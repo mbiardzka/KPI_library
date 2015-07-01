@@ -16,7 +16,7 @@ function initiateTableFilter(data, filterDiv, tableDiv) {
     var text = $(e.target).val()
     searchTable(data, text, tableDiv)
 	  		  $.ajax ({
-                  url: "http://www.samogon.cba.pl/click.php",
+                  url: "click.php",
 		  type: "POST",
                   data: { cell : "searchbar", valuecell : text }, 
                  });  
