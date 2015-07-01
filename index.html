@@ -1,0 +1,218 @@
+<html>
+	<head>
+		<title>KPI Library</title>
+                <meta charset="UTF-8">
+		<script type="text/javascript" src="js/ICanHaz.js"></script> 
+		<script type="text/javascript" src='js/jquery.js '></script>
+                <script type="text/javascript" src='js/tabletop.js'></script>
+                <script type="text/javascript" src='js/site.js'></script>
+		<script type="text/javascript" src='js/sheetsee.js'></script>
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link media="screen" rel="stylesheet" type="text/css" href="css/style.css"> 
+	</head>
+
+<body>
+
+<script>
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) { 
+        e.preventDefault();
+    }
+})
+</script>
+
+<script language="JavaScript">
+var password;
+var pass="cool";
+
+password=prompt('Please enter your password to view this page!','');
+
+if (password==pass)
+   ;
+else
+   {
+    window.location="http://www.google.com";
+    }
+</script>
+
+<div id="wrapper">
+<div id="title"></div>
+<ul class="nav">
+			<li><h3>Use KPI Library to search for definitions of the KPIs!</h3></li>
+</ul>
+
+		<div id="filters" class="container">
+			<input id="KPISearch" type="text" placeholder="Search for.."></input>
+			<span class="clear sml-button">Clear</span> 
+      <h3>Categories<span id="categories"></span>
+      <h3>Threshold<span id="thresholds"></span>   
+      <h3>Figure<span id="figures"></span>
+      <h3>Price<span id="prices"></span>   
+      <h3>View<span id="views"></span>   
+    </div>
+
+		<div id="KPITable"></div>
+
+	</div><!-- end wrapper -->
+
+	<script id="title" type="text/html">
+		<h1><span class="highlighted">{{numKPIs}}</span> KPIs in the Library</h1>
+	</script>
+
+  <script id="categories" type="text/html">
+    {{#rows}}
+      <span href="#" class="category sml-button">{{.}}</span>
+    {{/rows}}
+  </script><p>
+
+  <script id="subcategories" type="text/html">
+    {{#rows}}
+      <span href="#" class="subcategory sml-button">{{.}}</span>
+    {{/rows}}
+  </script>
+
+  <script id="thresholds" type="text/html">
+    {{#rows}}
+      <span href="#" class="threshold sml-button">{{.}}</span>
+    {{/rows}}
+  </script>
+
+  <script id="figures" type="text/html">
+    {{#rows}}
+      <span href="#" class="figure sml-button">{{.}}</span>
+    {{/rows}}
+  </script>
+
+  <script id="prices" type="text/html">
+    {{#rows}}
+      <span href="#" class="price sml-button">{{.}}</span>
+    {{/rows}}
+  </script>
+
+  <script id="views" type="text/html">
+    {{#rows}}
+      <span href="#" class="view sml-button">{{.}}</span>
+    {{/rows}}
+  </script>
+
+
+	<script id="KPITable" type="text/html">
+		<table>
+			<tr><th class="name">KPI name</th><th class="">Definition</th><th>Category</th><th>Subcategory</th><th>Threshold</th><th>Figure</th><th>Price</th><th>View</th></tr>
+		  {{#rows}}
+		  	<tr class="{{rowNumber}}"><td class="">{{name}}</td><td class="definition">{{definition}}</td>
+
+		  	<td class="category">{{#categories}}<a href="#">{{category}}</a> {{/categories}}</td>
+			<td class="subcategory">{{#subcategories}}<a href="#">{{subcategory}}</a> {{/subcategories}}</td>			
+			<td class="threshold">{{#thresholds}}<a href="#">{{threshold}}</a> {{/thresholds}}</td>
+			<td class="figure">{{#figures}}<a href="#">{{figure}}</a> {{/figures}}</td>
+			<td class="price">{{#prices}}<a href="#">{{price}}</a> {{/prices}}</td>
+			<td class="view">{{#views}}<a href="#">{{view}}</a> {{/views}}</td>
+
+</tr>
+
+		  {{/rows}}
+	  </table>
+
+</script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var URL = "https://docs.google.com/spreadsheets/d/1N4k5p9qYK5NsBpCeSMrOlH11tZxVO0mhZ6GIIX2hHT4/pubhtml"
+      Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+    }) 
+      
+ function showInfo(data) {
+ 
+      var gData = separateCategories(data)
+
+      var gData2 = separateSubcategories(data)
+      var gData3 = separateThresholds(data)
+      var gData4 = separateFigures(data)
+      var gData5 = separatePrices(data)
+      var gData6 = separateViews(data)
+      drawCategories(gData)
+
+      drawSubcategories(gData2)
+      drawThresholds(gData3)
+      drawFigures(gData4)
+      drawPrices(gData5)
+      drawViews(gData6)
+      cleanDates(gData)
+      pageTitle(gData)
+      Sheetsee.makeTable(gData.reverse(), "#KPITable")
+
+      Sheetsee.initiateTableFilter(gData, "#KPISearch", "#KPITable")
+
+
+      $(document).on("click", ".category", function(event){
+	
+        var category = $(event.target).text()     
+                var categoryFilter = getCategoryMatches(gData, category)
+   
+                Sheetsee.makeTable(categoryFilter.reverse(), "#KPITable")
+
+      })
+      $(document).on("click", ".subcategory", function(event){
+	
+        var subcategory = $(event.target).text()
+        
+                var subcategoryFilter = getSubcategoryMatches(gData2, subcategory)
+        
+                Sheetsee.makeTable(subcategoryFilter.reverse(), "#KPITable")
+
+      })
+      $(document).on("click", ".threshold", function(event){
+	
+        var threshold = $(event.target).text()
+        
+                var thresholdFilter = getThresholdMatches(gData3, threshold)
+        
+                Sheetsee.makeTable(thresholdFilter.reverse(), "#KPITable")
+
+      })
+
+      $(document).on("click", ".figure", function(event){
+	
+        var figure = $(event.target).text()
+        
+                var figureFilter = getFigureMatches(gData4, figure)
+        
+                Sheetsee.makeTable(figureFilter.reverse(), "#KPITable")
+
+
+      })
+
+      $(document).on("click", ".price", function(event){
+	
+        var price = $(event.target).text()
+        
+                var priceFilter = getPriceMatches(gData5, price)
+        
+                Sheetsee.makeTable(priceFilter.reverse(), "#KPITable")
+
+
+      })
+
+      $(document).on("click", ".view", function(event){
+	
+        var view = $(event.target).text()
+        
+                var viewFilter = getViewMatches(gData6, view)
+        
+                Sheetsee.makeTable(viewFilter.reverse(), "#KPITable")
+
+
+      })
+
+    }
+  
+
+</script>
+
+
+
+
+</body>
+</html>
