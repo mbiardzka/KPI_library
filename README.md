@@ -2,6 +2,7 @@
 
 # KPI_library
 Library that stores Key Performance Indicators for any business, uses Google Spreadsheets as a source, and stores search outputs in the database. Below you can see the tips on how to download and use it for your own.
+The main library used in the code is SheetSee by jLord (huge thanks for creating it). The other ones are: Tabletop, ICanHaz, jQuery, also Node.js is used.
 
 # How to fork it?
 
