@@ -2,7 +2,7 @@
 <?php
 mysql_connect('SERVER_ADDRESS', 'USER_NAME', 'PASSWORD_HERE') or die('Could not connect: ' . mysql_error());
 
-mysql_select_db('samogon_cba_pl') or die('Could not select database');
+mysql_select_db('SELECTED_DATABASE_NAME') or die('Could not select database');
 
 $cell = $_POST['cell'];
 $valuecell = $_POST['valuecell'];
