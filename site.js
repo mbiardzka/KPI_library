@@ -1,5 +1,3 @@
-// CATEGORIES FUNCTIONS
-
 // goes through all the categories and generates
 // an array of the different categories used
  
@@ -65,7 +63,7 @@ function getCategoryMatches(data, selectedCategory) {
     })
   })
 	  		  $.ajax ({
-                  url: "http://www.samogon.cba.pl/click.php",
+                  url: "click.php",
 		  type: "POST",
                   data: { cell : "category_field", valuecell : selectedCategory }, 
                  }); 
@@ -143,7 +141,7 @@ function getSubcategoryMatches(data, selectedSubcategory) {
     })
   })
 	  		  $.ajax ({
-                  url: "http://www.samogon.cba.pl/click.php",
+                  url: "click.php",
 		  type: "POST",
                   data: { cell : "subcategory_field", valuecell : selectedSubcategory }, 
                  }); 
@@ -219,7 +217,7 @@ function getThresholdMatches(data, selectedThreshold) {
     })
   })
 	  		  $.ajax ({
-                  url: "http://www.samogon.cba.pl/click.php",
+                  url: "click.php",
 		  type: "POST",
                   data: { cell : "threshold_field", valuecell : selectedThreshold }, 
                  }); 
@@ -295,7 +293,7 @@ function getFigureMatches(data, selectedFigure) {
     })
   })
 	  		  $.ajax ({
-                  url: "http://www.samogon.cba.pl/click.php",
+                  url: "click.php",
 		  type: "POST",
                   data: { cell : "figure_field", valuecell : selectedFigure }, 
                  }); 
@@ -370,7 +368,7 @@ function getPriceMatches(data, selectedPrice) {
     })
   })
 	          $.ajax ({
-                  url: "http://www.samogon.cba.pl/click.php",
+                  url: "click.php",
 		  type: "POST",
                   data: { cell : "price_field", valuecell : selectedPrice }, 
                  }); 
@@ -446,7 +444,7 @@ function getViewMatches(data, selectedView) {
     })
   })
 	          $.ajax ({
-                  url: "http://www.samogon.cba.pl/click.php",
+                  url: "click.php",
 		  type: "POST",
                   data: { cell : "view_field", valuecell : selectedView }, 
                  }); 
