@@ -25,6 +25,8 @@ Return to your forked copy of this repository and click the index.html file. The
 ## Other
 In index.html file there is a script (on lines 24-36) which introduces and executes password to the library. Right now, the password is set as "abc", which is not the safest one:) The script (i.e. password) might be changed or deleted. 
 
-# Development ideas
 For changing e.g. the width of the table with data, colors, fonts etc. please manipulate style.css file.
 The number and names of the columns might be changed in index.html file.
+
+# Development ideas
+ - get rid of case sensitivity while typing keywords into the searchbar
