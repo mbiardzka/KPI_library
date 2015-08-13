@@ -18,9 +18,27 @@ Return to your forked copy of this repository and click the index.html file. The
 6. Now visit your site at: youGitHubName.github.io/KPIlibrary. It should work just fine!
 
 ## Setting database
-1. If you have already found and created your own database, please go to file "SQL - setting database.txt" for further instructions what SQL queries you should use to create tables.
-2. Go to your forked repository and open the file "js/click.php"  and in the line 2 of code make relevant changes of database credentials (you'll find instructions in the respective file).
-3. Now it should work just fine - try to search something in KPI library and check if the results are stored in the database.
+1. Set an account on any popular site offering data storage. Create a database and table inside it with the following SQL code:
+
+CREATE DATABASE database_name;
+CREATE TABLE KPIdata
+(
+searchbar varchar(100)
+category_field varchar(255),
+subcategory_field varchar(255),
+threshold_field varchar(255),
+figure_field varchar(255),
+price_field varchar(255),
+view_field varchar(255)
+);
+
+2. Now populate the table with some initial values:
+
+INSERT INTO KPIdata (searchbar, category_field, subcategory_field, .../here the rest of the tables/)
+VALUES (abc, abc, abc, ..../and so on/);
+
+3. Go to your forked repository and open the file "js/click.php"  and in the line 2 of code make relevant changes of database credentials (you'll find instructions in the respective file).
+4. Now it should work just fine - try to search something in KPI library and check if the results are stored in the database.
  
 ## Other
 In index.html file there is a script (on lines 24-36) which introduces and executes password to the library. Right now, the password is set as "abc", which is not the safest one:) The script (i.e. password) might be changed or deleted. 
