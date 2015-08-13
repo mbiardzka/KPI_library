@@ -21,6 +21,9 @@ Return to your forked copy of this repository and click the index.html file. The
 1. If you have already found and created your own database, please go to file "SQL - setting database.txt" for further instructions what SQL queries you should use to create tables.
 2. Go to your forked repository and open the file "js/click.php"  and in the line 2 of code make relevant changes of database credentials (you'll find instructions in the respective file).
 3. Now it should work just fine - try to search something in KPI library and check if the results are stored in the database.
+ 
+## Other
+In index.html file there is a script (on lines 24-36) which introduces and executes password to the library. Right now, the password is set as "abc", which is not the safest one:) The script (i.e. password) might be changed or deleted. 
 
 # Development ideas
 For changing e.g. the width of the table with data, colors, fonts etc. please manipulate style.css file.
