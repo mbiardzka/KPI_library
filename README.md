@@ -2,7 +2,7 @@
 Library that stores Key Performance Indicators for any business, uses Google Spreadsheets as a source, and stores search outputs in the database. Below you can see the tips on how to download and use it for your own.
 The main library used is SheetSee by jLord (huge thanks for creating it!). Also accompanying examples of SheetSee usages were a great inspiration and largely helped me structuring the code (especially: shetsee-pocket and lending-library examples).  The other libraries used were: Tabletop, ICanHaz, jQuery. The project makes use of Node.js. 
 
-It is important to underscore that I commited few changes in original SheetSee library, adding $ajax command making it possible to store search results in the database.
+It is important to underscore that I commited few changes to original SheetSee library, adding $ajax command making it possible to store search results in the database.
 
 # How to fork it?
 
