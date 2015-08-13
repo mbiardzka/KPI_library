@@ -34,8 +34,8 @@ view_field varchar(255)
 
 2. Now populate the table with some initial values:
 
-INSERT INTO KPIdata (searchbar, category_field, subcategory_field, .../here the rest of the tables/)
-VALUES (abc, abc, abc, ..../and so on/);
+INSERT INTO KPIdata (searchbar, category_field, subcategory_field, threshold_field, figure_field, price_field, view_field)
+VALUES (abc, abc, abc, abc, abc, abc, abc);
 
 3. Go to your forked repository and open the file "js/click.php"  and in the line 2 of code make relevant changes of database credentials (you'll find instructions in the respective file).
 4. Now it should work just fine - try to search something in KPI library and check if the results are stored in the database.
