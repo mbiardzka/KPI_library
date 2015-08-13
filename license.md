@@ -1,7 +1,7 @@
 # Hi License! 
 
-## Sheetsee repo is BSD licensed.
-Copyright (c) 2015, Jessica Lord All rights reserved.
+## This repo is BSD licensed.
+Copyright (c) 2015, Maria Biardzka All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
